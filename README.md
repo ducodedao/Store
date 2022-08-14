@@ -5,3 +5,5 @@
 In the project directory, you can run:
 
 **Client** - `cd client yarn start`
+
+**Server** - `cd server yarn start`
