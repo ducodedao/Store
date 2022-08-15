@@ -1,0 +1,97 @@
+@use '../../../scss' as *;
+
+.header {
+	background-color: $mainBg;
+	box-shadow: $boxShadow;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1;
+
+	.headerMenuMobile {
+		display: none;
+
+		@include tablet {
+			@include flex;
+			cursor: pointer;
+		}
+	}
+
+	.headerLogo {
+		color: $mainColor;
+		font-size: $fontSizeLarge;
+
+		span {
+			display: block;
+			padding-bottom: 0.2rem;
+		}
+	}
+
+	.headerMenu {
+		@include tablet {
+			@include flex(center, flex-start);
+			flex-direction: column;
+			background-color: $mainBg;
+			box-shadow: $boxShadow;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 50%;
+			height: 100vh;
+			padding-top: 3rem;
+			transform: translateX(-100%);
+			transition: all 0.5s;
+			z-index: 2;
+
+			&.active {
+				transform: translateX(0);
+			}
+
+			@include mobile {
+				width: 75%;
+			}
+		}
+
+		.headerMenuClose {
+			display: none;
+
+			@include tablet {
+				display: block;
+				position: absolute;
+				right: 1rem;
+				cursor: pointer;
+			}
+		}
+
+		.headerMenuItem ~ .headerMenuItem {
+			margin-left: 1rem;
+
+			@include tablet {
+				margin-left: unset;
+				margin-top: 1rem;
+			}
+		}
+
+		.headerMenuItem {
+			&:hover {
+				color: $mainColor;
+			}
+
+			&.active {
+				color: $mainColor;
+				font-weight: 500;
+			}
+		}
+	}
+
+	.headerAction {
+		@include flex;
+	}
+
+	svg {
+		&:hover {
+			color: $mainColor;
+		}
+	}
+}

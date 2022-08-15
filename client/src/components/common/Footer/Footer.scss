@@ -1,0 +1,36 @@
+@use '../../../scss' as *;
+
+.footer {
+	text-align: center;
+
+	.content {
+		background-color: $mainBg;
+		box-shadow: $boxShadow;
+		padding: 1rem 0;
+
+		h3 {
+			color: $mainColor;
+			font-size: $fontSizeLarge;
+		}
+
+		p {
+			padding: 0.5rem 0;
+		}
+
+		.socials {
+			svg {
+				font-size: $fontSizeLarge;
+
+				&:hover {
+					color: $mainColor;
+				}
+			}
+		}
+	}
+
+	.copyright {
+		background-color: $mainColor;
+		color: $mainBg;
+		padding: 0.5rem 0;
+	}
+}
