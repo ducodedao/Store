@@ -79,7 +79,7 @@ const Header = () => {
 							</IconButton>
 						</Tooltip>
 						<Tooltip title='Login'>
-							<IconButton onClick={notify}>
+							<IconButton component={Link} to='/login'>
 								<PersonOutlineOutlined />
 							</IconButton>
 						</Tooltip>

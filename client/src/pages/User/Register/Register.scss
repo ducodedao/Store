@@ -1,0 +1,104 @@
+@use '../../../scss' as *;
+
+.auth {
+	@include flex;
+	flex-direction: column;
+	background-color: $mainBg;
+	box-shadow: $boxShadow;
+	border-radius: $borderRadius;
+	margin: 2rem auto;
+	padding: 2rem;
+	width: 50%;
+	transition: all 0.5s;
+
+	@include tablet {
+		width: 60%;
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+
+	@include mobile {
+		width: 85%;
+	}
+
+	p {
+		color: $mainColor;
+		text-align: center;
+		padding: 0.5rem;
+	}
+
+	.authForm {
+		@include flex;
+		flex-direction: column;
+		padding-top: 2rem;
+		width: 80%;
+
+		.authName,
+		.authEmail,
+		.authPassword,
+		.authConfirmPassword,
+		.authImage {
+			@include flex;
+			width: 100%;
+			margin-bottom: 1.5rem;
+			position: relative;
+
+			.authIcon,
+			.authEye {
+				position: absolute;
+				color: rgba(140, 140, 140, 0.9);
+				font-size: $fontSizeMedium;
+			}
+
+			.authIcon {
+				left: 0.5rem;
+			}
+
+			.authEye {
+				right: 0.5rem;
+			}
+
+			input {
+				width: 100%;
+				border: 1px solid rgba(140, 140, 140, 0.9);
+				border-radius: $borderRadius;
+				padding: 0.8rem 2rem;
+
+				&:focus {
+					border-color: $mainColor;
+				}
+			}
+		}
+
+		.authImage {
+			input {
+				padding: 0;
+				height: 2.5rem;
+				border: unset;
+				margin-left: 0.5rem;
+
+				&::file-selector-button {
+					width: 100%;
+					height: 100%;
+					border: none;
+					cursor: pointer;
+					transition: all 0.5s;
+
+					&:hover {
+						background-color: rgba(219, 219, 219, 0.938);
+					}
+				}
+			}
+		}
+
+		.authForgot {
+			margin-left: auto;
+			font-size: 0.9rem;
+			text-align: center;
+
+			&:hover {
+				color: $mainColor;
+			}
+		}
+	}
+}
