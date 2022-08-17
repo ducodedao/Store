@@ -12,11 +12,15 @@ import {
 } from '@mui/icons-material'
 import mainNav from './mainNav'
 import { toast } from 'react-toastify'
+import { useSelector } from 'react-redux'
+import UserOption from '../../User/UserOption'
 
 const Header = () => {
 	const menuRef = useRef(null)
 
 	const menuToggle = () => menuRef.current.classList.toggle('active')
+
+	const { isAuthenticated, user } = useSelector((state) => state.user)
 
 	const notify = () => toast('The function has not been developed.')
 
@@ -78,11 +82,15 @@ const Header = () => {
 								</Badge>
 							</IconButton>
 						</Tooltip>
-						<Tooltip title='Login'>
-							<IconButton component={Link} to='/login'>
-								<PersonOutlineOutlined />
-							</IconButton>
-						</Tooltip>
+						{isAuthenticated ? (
+							<UserOption user={user} />
+						) : (
+							<Tooltip title='Login'>
+								<IconButton component={Link} to='/login'>
+									<PersonOutlineOutlined />
+								</IconButton>
+							</Tooltip>
+						)}
 					</div>
 				</Container>
 			</header>
