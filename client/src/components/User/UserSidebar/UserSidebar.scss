@@ -1,0 +1,57 @@
+@use '../../../scss' as *;
+
+.userSidebar {
+	@include flex(stretch, center);
+	flex-direction: column;
+	background-color: $mainBg;
+	box-shadow: $boxShadow;
+	border-radius: $borderRadius;
+	margin-right: 1rem;
+
+	@include tablet {
+		margin-bottom: 1rem;
+		margin-right: unset;
+	}
+
+	.userSidebarItem ~ .userSidebarItem {
+		margin-top: 0.5rem;
+	}
+
+	.userSidebarItem {
+		@include flex(center, space-between);
+		padding: 0.5rem 2rem;
+		color: rgba(99, 94, 94, 0.9);
+		position: relative;
+
+		&:hover {
+			color: $mainColor;
+		}
+
+		&.active {
+			color: $mainColor;
+			font-weight: 500;
+
+			&:before {
+				position: absolute;
+				content: '';
+				height: 100%;
+				width: 0.2rem;
+				left: 0;
+				background-color: $mainColor;
+			}
+		}
+
+		.userSidebarLeft {
+			@include flex;
+
+			.userSidebarIcon {
+				@include flex;
+				margin-right: 0.5rem;
+			}
+		}
+
+		.userSidebarRight {
+			@include flex;
+		}
+	}
+}

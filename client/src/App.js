@@ -6,8 +6,13 @@ import Login from './pages/User/Login/Login'
 import NotFound from './components/common/NotFound/NotFound'
 import store from './redux/store'
 import { loadUser } from './redux/actions/userAction'
+import Profile from './pages/User/Profile/Profile'
+import { useSelector } from 'react-redux'
+import ProtectedRoute from './components/common/ProtectedRoute'
 
 const App = () => {
+	const { isAuthenticated } = useSelector((state) => state.user)
+
 	useEffect(() => {
 		store.dispatch(loadUser())
 	}, [])
@@ -18,6 +23,13 @@ const App = () => {
 				<Route path='/' element={<MainLayout />}>
 					<Route path='register' element={<Register />} />
 					<Route path='login' element={<Login />} />
+					<Route
+						element={
+							<ProtectedRoute isAuthenticated={isAuthenticated} />
+						}
+					>
+						<Route path='account' element={<Profile />} />
+					</Route>
 				</Route>
 
 				<Route path='*' element={<NotFound />} />
