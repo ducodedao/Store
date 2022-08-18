@@ -1,0 +1,79 @@
+@use '../../../scss' as *;
+
+.updateProfile {
+	@include flex;
+	flex-direction: column;
+	background-color: $mainBg;
+	box-shadow: $boxShadow;
+	border-radius: $borderRadius;
+	margin: auto;
+	padding: 2rem;
+	width: 100%;
+	transition: all 0.5s;
+
+	@include tablet {
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+
+	h2 {
+		color: $mainColor;
+		text-align: center;
+		padding: 0.5rem;
+	}
+
+	.updateProfileForm {
+		@include flex;
+		flex-direction: column;
+		padding-top: 2rem;
+		width: 80%;
+
+		.updateProfileName,
+		.updateProfileEmail,
+		.updateProfileImage {
+			@include flex;
+			width: 100%;
+			margin-bottom: 1.5rem;
+			position: relative;
+
+			.updateProfileIcon {
+				position: absolute;
+				color: rgba(140, 140, 140, 0.9);
+				font-size: $fontSizeMedium;
+				left: 0.5rem;
+			}
+
+			input {
+				width: 100%;
+				border: 1px solid rgba(140, 140, 140, 0.9);
+				border-radius: $borderRadius;
+				padding: 0.8rem 2rem;
+
+				&:focus {
+					border-color: $mainColor;
+				}
+			}
+		}
+
+		.updateProfileImage {
+			input {
+				padding: 0;
+				height: 2.5rem;
+				border: unset;
+				margin-left: 0.5rem;
+
+				&::file-selector-button {
+					width: 100%;
+					height: 100%;
+					border: none;
+					cursor: pointer;
+					transition: all 0.5s;
+
+					&:hover {
+						background-color: rgba(219, 219, 219, 0.938);
+					}
+				}
+			}
+		}
+	}
+}

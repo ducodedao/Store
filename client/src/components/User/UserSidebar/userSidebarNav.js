@@ -11,7 +11,7 @@ const userSidebarNav = [
 		icon: <PersonOutline />,
 		display: 'Profile',
 		num: null,
-		path: '',
+		path: '/account',
 	},
 	{
 		icon: <ListAlt />,
