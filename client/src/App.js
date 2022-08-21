@@ -13,9 +13,11 @@ import UpdateProfile from './pages/User/UpdateProfile/UpdateProfile'
 import UpdatePassword from './pages/User/UpdatePassword/UpdatePassword'
 import ForgotPassword from './pages/User/ForgotPassword/ForgotPassword'
 import ResetPassword from './pages/User/ResetPassword/ResetPassword'
+import AdminLayout from './layouts/AdminLayout/AdminLayout'
+import Dashboard from './pages/Admin/Dashboard/Dashboard'
 
 const App = () => {
-	const { isAuthenticated } = useSelector((state) => state.user)
+	const { isAuthenticated, user } = useSelector((state) => state.user)
 
 	useEffect(() => {
 		store.dispatch(loadUser())
@@ -49,6 +51,12 @@ const App = () => {
 						/>
 					</Route>
 				</Route>
+
+				{isAuthenticated && user.role === 'admin' && (
+					<Route path='admin' element={<AdminLayout />}>
+						<Route path='dashboard' element={<Dashboard />} />
+					</Route>
+				)}
 
 				<Route path='*' element={<NotFound />} />
 			</Routes>

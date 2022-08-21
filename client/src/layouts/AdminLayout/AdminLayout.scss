@@ -1,0 +1,33 @@
+@use '../../scss' as *;
+
+.adminLayout {
+	padding-left: $adminSidebarWidth;
+	overflow-x: hidden;
+
+	@include tablet {
+		padding-left: 0;
+		width: 100vw;
+	}
+
+	.adminContent {
+		background-color: $bodyBg;
+		min-height: 100vh;
+		padding: 2rem;
+		transition: all 0.5 ease-in-out;
+
+		@include tablet {
+			padding: 1rem;
+			position: relative;
+			z-index: 100;
+		}
+	}
+}
+
+.sidebarOpen .adminContent {
+	height: 100vh;
+	overflow-y: hidden;
+	border-top-left-radius: 25px;
+	border-bottom-left-radius: 25px;
+	transform: scale(0.8) translateX(50%);
+	transition: all 0.5s ease-in-out;
+}

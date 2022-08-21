@@ -1,0 +1,32 @@
+@use '../../../scss' as *;
+
+.topbar {
+	@include flex(center, space-between);
+	margin-bottom: 2rem;
+
+	.adminSidebarToggle {
+		display: none;
+
+		@include tablet {
+			@include flex;
+			cursor: pointer;
+		}
+	}
+
+	.adminSidebarInfo {
+		@include flex(center, flex-start);
+		background-color: $mainBg;
+		box-shadow: $boxShadow;
+		border-radius: 25px;
+
+		span {
+			padding: 0 2rem;
+			font-size: $fontSizeMedium;
+			font-weight: 500;
+
+			@include tablet {
+				padding: 0 1rem;
+			}
+		}
+	}
+}

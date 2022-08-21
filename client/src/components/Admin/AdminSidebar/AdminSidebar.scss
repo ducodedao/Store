@@ -1,0 +1,105 @@
+@use '../../../scss' as *;
+@use 'sass:math';
+
+.adminSidebar {
+	@include flex(stretch, flex-start);
+	flex-direction: column;
+	background-color: $mainBg;
+	box-shadow: $boxShadow;
+	width: $adminSidebarWidth;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	z-index: 99;
+
+	@include tablet {
+		width: 100vw;
+		background-color: $mainColor;
+		z-index: 1;
+	}
+
+	.adminSidebarLogo {
+		@include flex;
+		color: $mainColor;
+		font-size: $fontSizeLarge;
+		height: 7rem;
+
+		@include tablet {
+			@include flex(center, space-between);
+			color: $mainBg;
+			padding-left: 1rem;
+		}
+
+		.adminSidebarClose {
+			display: none;
+
+			@include tablet {
+				display: block;
+				cursor: pointer;
+				padding-right: 1rem;
+			}
+		}
+	}
+
+	.adminSidebarMenu {
+		@include flex(stretch, flex-start);
+		flex-direction: column;
+		flex-grow: 1;
+
+		.adminSidebarItem {
+			@include flex(center, flex-start);
+			margin-bottom: 2rem;
+			padding-left: 20%;
+			transition: all 0.5s ease-in-out;
+			position: relative;
+
+			@include tablet {
+				padding-left: 1rem;
+			}
+
+			&:hover {
+				color: $mainColor;
+
+				@include tablet {
+					color: $mainBg;
+				}
+			}
+
+			&.active {
+				color: $mainColor;
+				font-weight: 500;
+
+				@include tablet {
+					color: $mainBg;
+				}
+
+				&:before {
+					position: absolute;
+					content: '';
+					height: 100%;
+					width: 0.2rem;
+					left: 0;
+					background-color: $mainColor;
+
+					@include tablet {
+						background-color: $mainBg;
+					}
+				}
+			}
+
+			&:last-child {
+				margin-top: auto;
+				cursor: pointer;
+			}
+
+			.adminSidebarIcon {
+				@include flex;
+				margin-right: 2rem;
+
+				@include tablet {
+					margin-right: 1rem;
+				}
+			}
+		}
+	}
+}
